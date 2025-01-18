@@ -1,17 +1,19 @@
-class Piggie {
-  constructor(x, y, r, mass, img) {
+class Piggy {
+  constructor(x, y, r, mass, img, durability = 100) {
     this.body = Bodies.circle(x, y, r, {
       restitution: 0.7,
-      collisionFilter: {
-        category: 2
-      }
     });
     this.img = img;
+    this.durability = durability; // Resistencia inicial
     Body.setMass(this.body, mass);
     World.add(world, this.body);
   }
 
   show() {
+    if (this.isDestroyed()) {
+      return; 
+    }
+
     push();
     imageMode(CENTER);
     translate(this.body.position.x, this.body.position.y);
@@ -19,12 +21,24 @@ class Piggie {
     image(this.img, 0, 0, 2 * this.body.circleRadius, 2 * this.body.circleRadius);
     pop();
   }
+
+  applyDamage(damage) {
+    this.durability -= damage;
+    if (this.durability < 0) {
+      this.durability = 0;
+    }
+  }
+
+  isDestroyed() {
+    return this.durability <= 0;
+  }
 }
 
-// Clase para el piggie 1
-class Piggie1 extends Piggie {
+// Piggy1 (normal)
+class Piggy1 extends Piggy {
   constructor(x, y) {
-    const img = piggieImg[0]; 
-    super(x, y, 20, 2, img);  
+    const img = piggyImg[0];
+    const durability = 100;
+    super(x, y, 20, 2, img, durability);
   }
 }

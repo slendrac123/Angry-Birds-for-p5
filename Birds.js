@@ -21,26 +21,26 @@ class Bird {
   }
 }
 
-// Clase para el pájaro rojo
+// red
 class Red extends Bird {
   constructor(x, y) {
-    const img = birdImg[0]; // Red bird image
-    super(x, y, 20, 2, img);  // Llama al constructor de Bird
+    const img = birdImg[0]; 
+    super(x, y, 20, 3, img); 
   }
 }
 
-// Clase para el pájaro Stella
-class Stella extends Bird {
-  constructor(x, y) {
-    const img = birdImg[1]; // Stella bird image
-    super(x, y, 20, 3, img);  // Llama al constructor de Bird con un tamaño distinto
-  }
-}
-
-// Clase para el pájaro Stella
+// Terence
 class Terence extends Bird {
   constructor(x, y) {
-    const img = birdImg[2]; // Stella bird image
-    super(x, y, 30, 3, img);  // Llama al constructor de Bird con un tamaño distinto
+    const img = birdImg[1];  
+    super(x, y, 30, 10, img);  
+  }
+}
+
+// Chuck
+class Chuck extends Bird {
+  constructor(x, y) {
+    const img = birdImg[2]; 
+    super(x, y, 20, 2, img); 
   }
 }
