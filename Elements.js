@@ -68,6 +68,12 @@ class SlingShot {
       length: 1
     });
     World.add(world, this.sling);
+    this.slingImg = null;
+  }
+  
+  // Método para asignar la imagen del slingshot
+  setImage(img) {
+    this.slingImg = img;
   }
   
   show() {
@@ -93,6 +99,10 @@ class SlingShot {
   attach(bird) {
     this.sling.bodyB = bird.body;
   }
+  
+  isAttached() {
+    return this.sling.bodyB !== null; // Devuelve true si hay un cuerpo conectado
+  }
 }
 
 class Explosion {
@@ -114,5 +124,64 @@ class Explosion {
 
   isExpired() {
     return this.timer <= 0;
+  }
+}
+
+class Decoration {
+  constructor(x, y, w, h, img, opacity = 255) {
+    this.x = x; // Posición x
+    this.y = y; // Posición y
+    this.w = w; // Ancho
+    this.h = h; // Alto
+    this.img = img; // Imagen de la decoración
+    this.opacity = opacity; // Opacidad de la decoración (255 es totalmente opaco)
+  }
+
+  show() {
+    push();
+    tint(255, this.opacity); // Aplicar opacidad
+    imageMode(CENTER);
+    image(this.img, this.x, this.y, this.w, this.h); // Dibujar la imagen
+    pop();
+  }
+
+  // Método para cambiar la opacidad
+  setOpacity(opacity) {
+    this.opacity = opacity;
+  }
+
+  // Método para cambiar la posición
+  setPosition(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  // Método para cambiar el tamaño
+  setSize(w, h) {
+    this.w = w;
+    this.h = h;
+  }
+
+  // Método para cambiar la imagen
+  setImage(img) {
+    this.img = img;
+  }
+}
+
+class MetalBox {
+  constructor(x, y, w, h, img) {
+    this.body = Bodies.rectangle(x, y, w, h, { isStatic: true });
+    this.w = w;
+    this.h = h;
+    this.img = img;
+    World.add(world, this.body);
+  }
+
+  show() {
+    const pos = this.body.position;
+    push();
+    imageMode(CENTER);
+    image(this.img, pos.x, pos.y, this.w, this.h);
+    pop();
   }
 }

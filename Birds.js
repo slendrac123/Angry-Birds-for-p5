@@ -44,3 +44,11 @@ class Chuck extends Bird {
     super(x, y, 20, 2, img); 
   }
 }
+
+// Loser
+class Loser extends Bird {
+  constructor(x, y) {
+    const img = birdImg[3]; 
+    super(x, y, 20, 2, img); 
+  }
+}

@@ -1,5 +1,5 @@
 class Piggy {
-  constructor(x, y, r, mass, img, durability = 100) {
+  constructor(x, y, r, mass, img, durability = 200) {
     this.body = Bodies.circle(x, y, r, {
       restitution: 0.7,
     });
@@ -38,7 +38,7 @@ class Piggy {
 class Piggy1 extends Piggy {
   constructor(x, y) {
     const img = piggyImg[0];
-    const durability = 100;
+    const durability = 250;
     super(x, y, 20, 2, img, durability);
   }
 }
